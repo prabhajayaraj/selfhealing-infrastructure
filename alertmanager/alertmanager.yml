@@ -1,0 +1,13 @@
+
+route:
+  receiver: "self-healing-webhook"
+  group_wait: 5s
+  group_interval: 30s
+  repeat_interval: 1h
+
+receivers:
+  - name: "self-healing-webhook"
+
+    webhook_configs:
+      - url: "http://webhook:5001/alert"
+        send_resolved: true
